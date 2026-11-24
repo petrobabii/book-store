@@ -5,6 +5,7 @@ import About from './pages/About';
 import './App.css';
 import AllComponents from './components/AllComponents';
 import Orders from './pages/Orders';
+import Admin from './pages/Admin';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<AllComponents />} />
             <Route path="/about" element={<About />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </Container>
       </div>

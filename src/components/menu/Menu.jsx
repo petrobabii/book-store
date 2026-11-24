@@ -8,6 +8,7 @@ import { BiLogOut } from 'react-icons/bi';
 
 const Menu = () => {
   const [user, setUser] = useState(null);
+  const isAdmin = user && user.email === import.meta.env.VITE_ADMIN_EMAIL;
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -34,9 +35,12 @@ const Menu = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {user && (
-              <Nav.Link as={Link} to="/orders" className="text-light-emphasis text-white-hover">Мої замовлення</Nav.Link>
+              <Nav.Link as={Link} to="/orders" className="text-light text-white-hover">Мої замовлення</Nav.Link>
             )}
-            <Nav.Link as={Link} to="/about" className="text-light-emphasis text-white-hover">Про нас</Nav.Link>
+            <Nav.Link as={Link} to="/about" className="text-light text-white-hover">Про нас</Nav.Link>
+            {isAdmin && (
+              <Nav.Link as={Link} to="/admin" className="text-light text-white-hover">Адмін-панель</Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
